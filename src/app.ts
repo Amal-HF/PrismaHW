@@ -11,6 +11,7 @@ connectDB();
 // middleware
 app.use(express.json());
 app.use('/api/v1/movie', movieRouter)
+// app.use('/api/v1/user', userRouter)
 
 app.listen(5000, () => {
     console.log("Server is running at port 5000")

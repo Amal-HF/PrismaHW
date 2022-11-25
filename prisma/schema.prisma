@@ -20,3 +20,12 @@ model movie {
   duration Float 
   createdat DateTime @default(now())
 }
+model user {
+  id String @id @default(uuid())
+  username String
+  password Int
+  email String @unique
+  role String
+  joiningYear String
+  age Float
+}
