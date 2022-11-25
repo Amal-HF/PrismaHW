@@ -1,31 +1,21 @@
 import express from 'express';
 import validate from '../middleware/validate';
 import { 
-    getMovieHandler, 
-    addMovieHandler, 
-    updateMovieHandler, 
-    deleteMovieHandler, 
-    searchByNameMovieHandler,
-    searchByGenreMovieHandler,
-    moreThanRatingMovieHandler,
-} from '../controllers/movie.conroller';
+    getUserHandler,
+    addUserHandler,
+    // getUserByIDHandler,
+    // getUserByAgeHandler
+} from '../controllers/user.controller';
 import { 
-    addMovieSchema,
-    updateMovieSchema,
-    deleteMovieSchema, 
-    searchByNameMovieSchema,
-    searchByGenreMovieSchema,
- } from '../Zod.schema/movie.schema';
+    userSchema,
+    userParamsSchema
+ } from '../Zod.schema/user.schema';
 
 const router = express.Router();
 
-router.get('/', getMovieHandler);
-router.post('/', validate(addMovieSchema), addMovieHandler);
-router.put('/:id', validate(updateMovieSchema), updateMovieHandler);
-router.delete('/:id', validate(deleteMovieSchema), deleteMovieHandler);
-router.get('/name/:name', validate(searchByNameMovieSchema), searchByNameMovieHandler);
-router.get('/genre/:genre', validate(searchByGenreMovieSchema), searchByGenreMovieHandler);
-router.get('/rating', moreThanRatingMovieHandler);
-
+router.get('/', getUserHandler);
+router.post('/', validate(userSchema), addUserHandler);
+// router.get('/:id', validate(userParamsSchema), getUserByIDHandler);
+// router.get('/age/:id', validate(userParamsSchema), getUserByAgeHandler);
 
 export default router;

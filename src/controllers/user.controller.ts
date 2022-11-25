@@ -49,45 +49,7 @@ export const addUserHandler = async (
     }
 }
 
-// export const updateMovieHandler = async (
-//     req:Request, 
-//     res:Response, 
-//     next:NextFunction
-// ) => {
-//     try{
-//         const newMovie = req.body as movie;
-//         const {id} = req.params as movieIDSchemaType;
-//         await prisma.movie.update({
-//             where: {id},
-//             data: newMovie
-//         })
-//         return res.status(200).json({
-//             message: 'Movie updated :)'
-//         })
-//     } catch (err){
-//         console.log(err);
-//         return res.status(500).json({
-//             message: 'Server Error !'
-//         })
-//     }
-// }
-
-// export const deleteMovieHandler = async (req:Request, res:Response, next:NextFunction) => {
-//     try{
-//         const {id} = req.params as movieIDSchemaType;
-//         await prisma.movie.delete({
-//             where: {id}
-//         })
-//         return res.status(200).json({message: 'Movie deleted :)'});
-//     } catch (err){
-//         console.log(err);
-//         return res.status(500).json({
-//             message: 'Server Error !'
-//         })
-//     }
-// }
-
-export const GetUserByIDHandler = async (
+export const getUserByIDHandler = async (
     req:Request, 
     res:Response, 
     next:NextFunction
@@ -96,7 +58,7 @@ export const GetUserByIDHandler = async (
         const {param} = req.params as userParamsSchemaType ;
         const users = await prisma.user.findFirst({
             where: {
-                name: param
+                id: param
             },
         });
         res.status(200).json(users);
@@ -108,7 +70,7 @@ export const GetUserByIDHandler = async (
     }
 }
 
-export const GetUserByEmailHandler = async (
+export const getUserByEmailHandler = async (
     req:Request, 
     res:Response, 
     next:NextFunction
@@ -130,46 +92,46 @@ export const GetUserByEmailHandler = async (
     }
 }
 
-export const GetUserByAgeHandler = async (
-    req:Request, 
-    res:Response, 
-    next:NextFunction
-) => {
-    try{
-        const {param} = req.params as userParamsSchemaType;
-        const age = parseInt(param);
-        const users = await prisma.user.findMany({
-            where{
-                age > age
-            },
-        });
-        res.status(200).json(users);
-    } catch (err){
-        console.log(err);
-        return res.status(500).json({
-            message: 'Server Error !'
-        })
-    }
-}
+// export const getUserByAgeHandler = async (
+//     req:Request, 
+//     res:Response, 
+//     next:NextFunction
+// ) => {
+//     try{
+//         const {param} = req.params as userParamsSchemaType;
+//         const age = parseFloat(param);
+//         const users = await prisma.user.findMany({
+//             where{
+//                 age > age
+//             }
+//         });
+//         res.status(200).json(users);
+//     } catch (err){
+//         console.log(err);
+//         return res.status(500).json({
+//             message: 'Server Error !'
+//         })
+//     }
+// }
 
-export const GetUserByEmailHandler = async (
-    req:Request, 
-    res:Response, 
-    next:NextFunction
-) => {
-    try{
-        const {param} = req.params as userParamsSchemaType;
-        // const genre = id.toLowerCase();
-        const users = await prisma.user.findMany({
-            where: {
-                email : param
-            },
-        });
-        res.status(200).json(users);
-    } catch (err){
-        console.log(err);
-        return res.status(500).json({
-            message: 'Server Error !'
-        })
-    }
-}
+// export const getUserByEmailHandler = async (
+//     req:Request, 
+//     res:Response, 
+//     next:NextFunction
+// ) => {
+//     try{
+//         const {param} = req.params as userParamsSchemaType;
+//         // const genre = id.toLowerCase();
+//         const users = await prisma.user.findMany({
+//             where: {
+//                 email : param
+//             },
+//         });
+//         res.status(200).json(users);
+//     } catch (err){
+//         console.log(err);
+//         return res.status(500).json({
+//             message: 'Server Error !'
+//         })
+//     }
+// }
