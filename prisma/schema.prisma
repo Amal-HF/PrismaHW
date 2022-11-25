@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures= ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://aehtsx9a8czg6serypl8:pscale_pw_EmknAV3rOgYglBWdbNDgTrgVxYkUrI5sL6E0Ik7K71h@us-east.connect.psdb.cloud/firstdb?sslaccept=strict"
+  referentialIntegrity = "prisma"
+}
+
+model movie {
+  id String @id @default(uuid())
+  name String  @unique
+  genre String 
+  rating Float
+  duration Float 
+  createdat DateTime @default(now())
+}
